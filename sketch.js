@@ -1,3 +1,22 @@
+//examples of different type of data in java script
+//1.string
+//2.number
+//3.boolean(t/f)
+//undefined
+//null
+var b
+console.log(b);
+var ab = 20;
+console.log(ab);
+var A = "press enter to start";
+console.log(A);
+//examples of array
+var array1 = [3,5,8,6,4];
+console.log(array1);
+var array2 = ["bird",5,true,b];
+console.log(array2);
+var array3 =[[1,4],[2,8],[5,3]];
+console.log(array3);
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,6 +26,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+var gameState = "play"
 
 
 function preload() {
@@ -69,12 +89,15 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if (gameState === "play"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "end";
 }
 
 function keyPressed(){
